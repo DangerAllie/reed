@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# vim swap files
+src/*.swp
+
+# Build targets
+src/runtests
+src/reed
