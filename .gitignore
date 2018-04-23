@@ -35,5 +35,4 @@
 src/*.swp
 
 # Build targets
-src/runtests
-src/reed
+bin/*
