@@ -1,5 +1,5 @@
-#ifndef LOCAL_TEXT_FILE_H
-#define LOCAL_TEXT_FILE_H
+#ifndef LOCALTEXTFILE_H
+#define LOCALTEXTFILE_H
 
 #include <string>
 
