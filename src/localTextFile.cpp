@@ -1,3 +1,9 @@
+// Local text file loading and manipulation object
+//
+// primary author: Allison Bianchi
+//
+// See LICENSE for use and distribution
+
 #include <stdio.h>
 #include "localTextFile.h"
 

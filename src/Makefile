@@ -1,6 +1,14 @@
-reed: reed.cpp localTextFile.*
-	g++ -o ../bin/reed reed.cpp localTextFile.cpp
+# For making
+#
+# primary author: Allison Bianchi
+#
+# See LICENSE for use and distribution
 
-tests: tests.cpp localTextFile.*
-	g++ -o ../bin/runtests tests.cpp localTextFile.cpp
+CPPs = localTextFile.cpp cursesFrontEnd.cpp
+
+reed: reed.cpp $(CPPs)
+	g++ -o ../bin/reed reed.cpp $(CPPs) -lstdc++ -lncurses
+
+tests: tests.cpp $(CPPs)
+	g++ -o ../bin/runtests tests.cpp $(CPPs) -lstdc++ -lncurses
 
