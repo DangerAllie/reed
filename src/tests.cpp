@@ -5,6 +5,7 @@
 // See LICENSE for use and distribution
 
 #include "localTextFile.h"
+#include "buffer.h"
 
 #include <stdio.h>
 #include <string>
@@ -64,7 +65,12 @@ int main()
     LocalTextFile* doc = LocalTextFile::createNew("../data/test.md");
 
     ASSERT(doc, "Open text file");
-    ASSERT("../data/test.md" == doc->getFilename(), "Document filename validation");
+    ASSERT("../data/test.md" == doc->filename(),
+           "Document filename validation");
+
+    Buffer buf(doc);
+    ASSERT(buf.data() == "These violent delights have violent ends.",
+           "Simple data read case");
 
     delete doc;
     doc = 0;

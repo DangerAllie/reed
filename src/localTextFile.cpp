@@ -10,6 +10,7 @@
 LocalTextFile::LocalTextFile(const std::string& filename)
     : m_filename(filename)
 {
+    _refresh();
 }
 
 LocalTextFile::~LocalTextFile()
@@ -17,9 +18,15 @@ LocalTextFile::~LocalTextFile()
 }
 
 const std::string&
-LocalTextFile::getFilename()
+LocalTextFile::filename()
 {
     return m_filename;
+}
+
+const std::string&
+LocalTextFile::rawText()
+{
+    return m_text;
 }
 
 /* static */

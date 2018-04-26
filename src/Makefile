@@ -4,7 +4,7 @@
 #
 # See LICENSE for use and distribution
 
-CPPs = localTextFile.cpp cursesFrontEnd.cpp
+CPPs = localTextFile.cpp cursesFrontEnd.cpp buffer.cpp
 
 reed: reed.cpp $(CPPs)
 	g++ -o ../bin/reed reed.cpp $(CPPs) -lstdc++ -lncurses

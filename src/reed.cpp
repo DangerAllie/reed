@@ -4,6 +4,9 @@
 //
 // See LICENSE for use and distribution
 
+#include "buffer.h"
+#include "localTextFile.h"
+
 #include <iostream>
 #include <string>
 
@@ -24,6 +27,11 @@ void eventLoop()
             printf("\n");
             printf("reed is a ridiculously extensible editor\n");
             printf("\n");
+        }
+        else if (cmd == "dump") {
+            LocalTextFile* f = LocalTextFile::createNew("../data/test.md");
+            printf("%s\n", Buffer(f).data().c_str());
+            delete f;
         }
         else if (not cmd.empty()) {
             printf("Unknown: '%s'\n", cmd.c_str());

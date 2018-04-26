@@ -1,5 +1,1 @@
-Some text
-
-These violent delights have violent ends
-
-
+These violent delights have violent ends.

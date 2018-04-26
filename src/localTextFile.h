@@ -15,13 +15,18 @@ public:
     static LocalTextFile* createNew(const std::string& filename);
     ~LocalTextFile();
 
-    const std::string& getFilename();
+    // FIXME constify
+    const std::string& filename();
+    const std::string& rawText();
 
 private:
     LocalTextFile(const std::string&);
 
+    void _refresh();
+
 private:
     std::string m_filename;
+    std::string m_text;
 };
 
 #endif
