@@ -46,7 +46,6 @@ void eventLoop()
             return;
         }
         else if (top == "about") {
-            printf("\n");
             printf("reed is a ridiculously extensible editor\n");
             printf("\n");
         }
