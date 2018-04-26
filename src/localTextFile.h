@@ -15,7 +15,6 @@ public:
     static LocalTextFile* createNew(const std::string& filename);
     ~LocalTextFile();
 
-    // FIXME constify
     bool valid() const;
     const std::string& filename() const;
     const std::string& rawText() const;
