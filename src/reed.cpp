@@ -26,9 +26,9 @@ void eventLoop()
         // Tokenize command
         std::vector<std::string> toks;
         std::string tok;
-        std::stringstream cmdStream(cmd);
-        while (not cmdStream.eof()) {
-            cmdStream >> tok;
+        std::stringstream tokstream(cmd);
+        while (not tokstream.eof()) {
+            tokstream >> tok;
             if (not tok.empty()) {
                 toks.push_back(tok);
             }
