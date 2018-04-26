@@ -17,6 +17,7 @@ public:
     Buffer(LocalTextFile*);
     ~Buffer();
 
+    bool empty() const;
     const std::string& data() const;
 
 private:

@@ -61,19 +61,35 @@ int main()
     printf("reed framework test suite\n");
     printf("\n");
 
-    // Basic document tests
-    LocalTextFile* doc = LocalTextFile::createNew("../data/test.md");
+    //--
+    // LocalTextFile
+    LocalTextFile* doc = LocalTextFile::createNew("../data/bogus.md");
+    ASSERT(not doc->valid(), "Fail to open bogus text file");
+    ASSERT(doc->filename() == std::string(), "Invalid document has no filename");
 
-    ASSERT(doc, "Open text file");
+    doc = LocalTextFile::createNew("../data/test.md");
+    ASSERT(doc and doc->valid(), "Succeed to open legit text file");
     ASSERT("../data/test.md" == doc->filename(),
-           "Document filename validation");
+           "Document remembers filename");
 
-    Buffer buf(doc);
-    ASSERT(buf.data() == "These violent delights have violent ends.",
+    delete doc;
+    doc = 0;
+    //--
+
+    //--
+    // Buffer
+    Buffer buf(0);
+    ASSERT(buf.empty(), "Buffer from invalid file is empty");
+    ASSERT(buf.data().empty(), "Empty buffer has no data");
+
+    doc = LocalTextFile::createNew("../data/test.md");
+    buf = Buffer(doc);
+    ASSERT(buf.data() == "These violent delights have violent ends.\n",
            "Simple data read case");
 
     delete doc;
     doc = 0;
+    //--
 
     // TODO More tests!
 

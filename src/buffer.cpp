@@ -9,11 +9,19 @@
 
 Buffer::Buffer(LocalTextFile* src)
 {
-    m_data = src->rawText();
+    if (src and src->valid()) {
+        m_data = src->rawText();
+    }
 }
 
 Buffer::~Buffer()
 {
+}
+
+bool
+Buffer::empty() const
+{
+    return m_data.empty();
 }
 
 const std::string&

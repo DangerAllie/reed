@@ -16,6 +16,7 @@ public:
     ~LocalTextFile();
 
     // FIXME constify
+    bool valid() const;
     const std::string& filename() const;
     const std::string& rawText() const;
 
@@ -25,6 +26,7 @@ private:
     void _refresh();
 
 private:
+    bool m_valid;
     std::string m_filename;
     std::string m_text;
 };
