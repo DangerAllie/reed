@@ -16,8 +16,8 @@ public:
     ~LocalTextFile();
 
     // FIXME constify
-    const std::string& filename();
-    const std::string& rawText();
+    const std::string& filename() const;
+    const std::string& rawText() const;
 
 private:
     LocalTextFile(const std::string&);

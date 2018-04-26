@@ -18,13 +18,13 @@ LocalTextFile::~LocalTextFile()
 }
 
 const std::string&
-LocalTextFile::filename()
+LocalTextFile::filename() const
 {
     return m_filename;
 }
 
 const std::string&
-LocalTextFile::rawText()
+LocalTextFile::rawText() const
 {
     return m_text;
 }
@@ -34,5 +34,10 @@ LocalTextFile*
 LocalTextFile::createNew(const std::string& filename)
 {
     return new LocalTextFile(filename);
+}
+
+void
+LocalTextFile::_refresh()
+{
 }
 

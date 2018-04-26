@@ -17,7 +17,7 @@ Buffer::~Buffer()
 }
 
 const std::string&
-Buffer::data()
+Buffer::data() const
 {
     return m_data;
 }
