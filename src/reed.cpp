@@ -14,6 +14,38 @@
 
 #include <stdio.h>
 
+static void
+_tokenize(const std::string& str, std::vector<std::string>* toks)
+{
+    // Split str into tokens by whitespace
+    std::stringstream tokstream(str);
+    std::string tok;
+    char c;
+
+    while (tokstream.get(c)) {
+        if (isspace(c)) {
+            if (tok.empty()) {
+                // Eat whitespace between tokens
+                continue;
+            }
+            else {
+                // New token
+                toks->push_back(tok);
+                tok.clear();
+            }
+        }
+        else {
+            // Part of the next token
+            tok += c;
+        }
+    }
+
+    if (tokstream.eof() and not tok.empty()) {
+        // Push final token
+        toks->push_back(tok);
+    }
+}
+
 void eventLoop()
 {
     std::string cmd;
@@ -29,18 +61,9 @@ void eventLoop()
             cmd = "quit";
         }
 
-        // Tokenize command
+        // Parse and execute command
         std::vector<std::string> toks;
-        std::string tok;
-        std::stringstream tokstream(cmd);
-        while (not tokstream.eof()) {
-            tokstream >> tok;
-            if (not tok.empty()) {
-                toks.push_back(tok);
-            }
-        }
-
-        // Execute
+        _tokenize(cmd, &toks);
         if (toks.empty()) {
             continue;
         }
@@ -57,6 +80,7 @@ void eventLoop()
         else if (top == "dump") {
             if (toks.size() < 2) {
                 printf("usage: dump FILENAME\n");
+                printf("\n");
                 continue;
             }
 
@@ -69,10 +93,12 @@ void eventLoop()
                 }
                 else {
                     printf("[no data]\n");
+                    printf("\n");
                 }
             }
             else {
                 printf("Failed to open '%s'\n", filename.c_str());
+                printf("\n");
             }
 
             delete f;
