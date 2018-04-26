@@ -71,6 +71,7 @@ void eventLoop()
         const std::string& top = toks[0];
 
         if (top == "q" or top == "quit") {
+            printf("go with god\n");
             return;
         }
         else if (top == "about") {
@@ -114,7 +115,6 @@ int main(int argc, char** argv)
 {
     eventLoop();
 
-    printf("go with god\n");
     return 0;
 }
 
