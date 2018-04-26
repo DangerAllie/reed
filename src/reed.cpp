@@ -19,9 +19,15 @@ void eventLoop()
     std::string cmd;
 
     while (1) {
-        // Read input
+        // Prompt and read input
         printf("reed@ ");
-        std::getline(std::cin, cmd);
+
+        if (not std::getline(std::cin, cmd)) {
+            // User ctrl-d'd, newline so quit messages get formatted
+            // properly and falsify a quit command for the logic below
+            printf("\n");
+            cmd = "quit";
+        }
 
         // Tokenize command
         std::vector<std::string> toks;
@@ -42,7 +48,6 @@ void eventLoop()
         const std::string& top = toks[0];
 
         if (top == "q" or top == "quit") {
-            printf("go with god\n");
             return;
         }
         else if (top == "about") {
@@ -82,6 +87,8 @@ void eventLoop()
 int main(int argc, char** argv)
 {
     eventLoop();
+
+    printf("go with god\n");
     return 0;
 }
 
